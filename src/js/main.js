@@ -29,18 +29,20 @@ $(document).ready(function() {
     async function runQuery(option) {
       //run query for Doctor Name
       if (option === "name") {
-        const responce = await getDoctor.byName(inputDocName);
-        if (responce.length > 0) {
-          console.log(responce);
+        const docList = await getDoctor.byName(inputDocName);
+        if (docList.length > 0) {
+          console.log(docList);
+          ui.renderList(docList);
         } else {
           console.log("name bad");
           $(".output").html("sorry there was an issue getting your search");
         }
         //run query for Keyword
       } else if (option === "keyWord") {
-        const responce = await getDoctor.byKeyWord(inputKeyWord);
-        if (responce.length > 0) {
-          console.log(responce);
+        const docList = await getDoctor.byKeyWord(inputKeyWord);
+        if (docList.length > 0) {
+          console.log(docList);
+          ui.renderList(docList);
           //report issue
         } else {
           console.log("keyword bad");

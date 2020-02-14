@@ -51,10 +51,11 @@ export class GetDoctor {
   simplify(body) {
     let renterList = [];
     body.data.forEach((doc) => {
-      const { accepts_new_patients, website, visit_address, phones } = doc.practices[0];
+      const { accepts_new_patients, name, website, visit_address, phones } = doc.practices[0];
       const { first_name, middle_name, last_name, title, image_url, gender, bio } = doc.profile;
       const tempObj = {
         accepts_new_patients,
+        name,
         website,
         visit_address,
         phones,
