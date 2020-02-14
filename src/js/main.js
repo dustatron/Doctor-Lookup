@@ -7,15 +7,33 @@ $(document).ready(function() {
   //get form submit button
   $("form").submit((event) => {
     event.preventDefault();
-    let keyWord = $("#key-word").val();
-    let docName = $("#doctor-name").val();
+    let inputKeyWord = $("#key-word").val();
+    let inputDocName = $("#doctor-name").val();
 
-    //print to DOM
-    if (keyWord === "") {
-      getDoctor.byName(docName);
-    } else if (docName === "") {
-      getDoctor.byKeyWord(keyWord);
+    //Check what input has data
+    if (inputKeyWord && inputDocName) {
+      $(".output").html("only use one search field at a time");
+      $("#key-word").val("");
+      $("#doctor-name").val("");
+    } else if (inputKeyWord !== "") {
+      runQuery("keyWord");
+      $("#key-word").val("");
+    } else if (inputDocName !== "") {
+      runQuery("name");
+      $("#doctor-name").val("");
+    } else {
+      $(".output").html("both search terms are empty");
     }
-    $(".output").html(keyWord + " " + docName);
+
+    async function runQuery(option) {
+      if (option === "name") {
+        console.log("name");
+        // const responce = await getDoctor.byName(inputDocName);
+      } else if (option === "keyWord") {
+        console.log("keyword");
+        // const responce = await getDoctor.byKeyWord(inputKeyWord);
+      }
+    }
+    // $(".output").html(inputKeyWord + " " + inputDocName);
   });
 });
