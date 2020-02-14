@@ -1,9 +1,11 @@
 import { GetDoctor } from "./../js/doctor-service";
+import { UI } from "./../js/ui";
 import "./../scss/main.scss";
 import $ from "jquery";
 
 $(document).ready(function() {
   let getDoctor = new GetDoctor();
+  let ui = new UI();
   //get form submit button
   $("form").submit((event) => {
     event.preventDefault();
@@ -13,14 +15,13 @@ $(document).ready(function() {
     //Check what input has data, if no data: return error, if data in both: return error
     if (inputKeyWord && inputDocName) {
       $(".output").html("only use one search field at a time");
-      $("#key-word").val("");
-      $("#doctor-name").val("");
+      ui.clearInputs();
     } else if (inputKeyWord !== "") {
       runQuery("keyWord");
-      $("#key-word").val("");
+      ui.clearInputs();
     } else if (inputDocName !== "") {
       runQuery("name");
-      $("#doctor-name").val("");
+      ui.clearInputs();
     } else {
       $(".output").html("both search terms are empty");
     }
@@ -47,6 +48,7 @@ $(document).ready(function() {
         }
       }
     }
+
     // $(".output").html(inputKeyWord + " " + inputDocName);
   });
 });
