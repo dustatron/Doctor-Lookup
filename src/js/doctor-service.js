@@ -7,11 +7,19 @@ export class GetDoctor {
     this.limit = "10";
     this.keyword = "";
     this.name = "";
+    this.city;
+    this.state;
   }
 
-  addInput(keyword, name) {
+  addInput(keyword, name, city, state) {
     this.keyword = keyword;
     this.name = name;
+    this.city = city;
+    this.state = state;
+  }
+
+  setLocaiton(arr) {
+    this.location = arr.lat + "%2C" + arr.lng;
   }
 
   returnList() {

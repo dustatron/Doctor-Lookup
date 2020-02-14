@@ -1,5 +1,9 @@
 import $ from "jquery";
 export class UI {
+  constructor(doctor) {
+    this.doctor = doctor;
+  }
+
   //UI tools
   clearInputs() {
     $("#key-word").val("");
@@ -40,5 +44,9 @@ export class UI {
       </div>`;
     });
     $(".output").html(renderList);
+  }
+
+  printCity() {
+    $(".output").before(this.doctor.city);
   }
 }

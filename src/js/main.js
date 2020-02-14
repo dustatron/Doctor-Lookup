@@ -11,7 +11,7 @@ const location = new Location();
 $(document).ready(function() {
   $(".container").fadeIn();
   let getDoctor = new GetDoctor();
-  let ui = new UI();
+  let ui = new UI(getDoctor);
 
   ///////////////////////////////////////
   ///////// submit button  /////////////
@@ -19,7 +19,7 @@ $(document).ready(function() {
     event.preventDefault();
     let inputKeyWord = $("#key-word").val();
     let inputDocName = $("#doctor-name").val();
-    // let inputCity = $("#city").val();
+    let inputCity = $("#city").val();
 
     //Show loading gif
     $(".output").html("");
@@ -28,14 +28,27 @@ $(document).ready(function() {
     getDoctor.addInput(inputKeyWord, inputDocName);
     ui.clearInputs();
 
-    // location.getLatLong(inputCity);
-
     async function renderDoctorList() {
-      console.log("render hans been run", getDoctor.keyword, getDoctor.name);
+      const locationData = await location.getLatLong(inputCity);
+      if (locationData === 0) {
+        $(".output").html("That city was not found");
+      }
+      console.log(locationData[0].geometry);
+      getDoctor.setLocaiton(
+        locationData[0].geometry,
+        locationData[0].components.city,
+        locationData[0].components.state
+      );
+
       const docList = await getDoctor.returnList();
-      $(".loading").hide();
-      ui.renderList(docList);
-      await console.log("docList", docList);
+      $(".loading").hide(); // Turn off loading animation
+
+      if (docList === 0) {
+        $(".output").html("Zero Results");
+      } else {
+        ui.printCity();
+        ui.renderList(docList); //print linst to screen
+      }
     }
 
     renderDoctorList();
