@@ -13,40 +13,52 @@ This site was created as an Epicodus independent project. It uses the BetterDoct
 
 _Make sure you have [git version control](https://git-scm.com/downloads) installed on your computer._
 
-1. find the green 'Clone or Download' button and copy the link
-2. open terminal and type...
+1. Find the green 'Clone or Download' button and copy the link
+2. Open your terminal and type...
 
 **Windows**
 ```sh 
 cd desktop
 ```
 
- Mac & linux 
+ **Mac & linux** 
  ```sh
  cd ~/Desktop
  ```
 
- 3. in terminal type '_git clone {link to repository}_ '
+ 3. Then clone the repositor by typing:
 
 ```sh
-git clone Link-Here
+git clone https://github.com/dustatron/Doctor-Lookup.git
 ```
 
-4. navigate to the new folder that was created on your desk
+4. Navigate to the new folder that was created by typing:
 ```sh
 cd folder name
 ```
 
-5. run npm install
+5. Now install all node packages by typing:
 ```sh
 npm install
 ```
-6. run development server
+6. Get an API key from [BetterDoctor API](https://developer.betterdoctor.com/)
+
+7. Create a new '.env' file by typing:
+```sh
+touch .env
+```
+
+8. Open the .env file in your test editor and add the following:
+```sh
+API_KEY = YOUR UNIQUE API KEY GOES HERE
+```
+
+9. Now run the development server
 ```sh
 npm run start
 ```
 
-7. edit files in '/src' to make changes to the project.
+10. Edit files in '/src' to make changes to the project.
 
 
 
@@ -56,7 +68,7 @@ npm run start
 
 Behavoir | Input | Output
 :---------|:------:|:------:
-|1 - The program will take in a simple input and return the input | 'hello' | 'hello' |
+|1 - A user will be able to enter a medical issue and the program will return a listing of doctors near them | 'couching' | return list of doctors |
 
 
 ## Support 
@@ -77,6 +89,7 @@ _The software is provided as is. It might work as expected - or not. Use at your
 * [Uglifyjs](https://www.uglifyjs.net/)
 * [Jest](https://jestjs.io/)
 * [dotenv](#)
+* [BetterDoctor API](https://developer.betterdoctor.com/)
 
 ## Environmental Variables
 
