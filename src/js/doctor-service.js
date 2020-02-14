@@ -9,8 +9,25 @@ export class GetDoctor {
     this.name = "";
   }
 
-  async byName(name) {
-    let queryString = `?name=${name}&location=${this.location}%2C${this.miles}&user_location=${this
+  addInput(keyword, name) {
+    this.keyword = keyword;
+    this.name = name;
+  }
+
+  returnList() {
+    if (this.keyword && this.name) {
+      return "Please search for one query at a time";
+    } else if (this.keyword) {
+      return this.byKeyWord(this.keyword);
+    } else if (this.name) {
+      return this.byName(this.byName);
+    } else {
+      return "Both seach feilds are empty place try again";
+    }
+  }
+
+  async byName() {
+    let queryString = `?name=${this.name}&location=${this.location}%2C${this.miles}&user_location=${this
       .location}&skip=0&limit=${this.limit}&user_key=${process.env.API_KEY}`;
     let url = this.link + queryString;
 
@@ -21,16 +38,16 @@ export class GetDoctor {
         return false;
       }
       const jsonBody = await reponce.json();
+      console.log("name search", jsonBody);
       return this.simplify(jsonBody);
-      // console.log("name search", makeJson);
     } catch (error) {
       console.error(error);
       return false;
     }
   }
 
-  async byKeyWord(keyWord) {
-    let queryString = `?query=${keyWord}&location=${this.location}%2C${this.miles}&user_location=${this
+  async byKeyWord() {
+    let queryString = `?query=${this.keyword}&location=${this.location}%2C${this.miles}&user_location=${this
       .location}&skip=0&limit=${this.limit}&user_key=${process.env.API_KEY}`;
     let url = this.link + queryString;
 
@@ -42,8 +59,8 @@ export class GetDoctor {
       }
       const jsonBody = await reponce.json();
       //create simple objects from json
+      console.log("keyword search", jsonBody);
       return this.simplify(jsonBody);
-      // console.log("keyword search", makeJson);
     } catch (error) {
       console.error(error);
       return false;
