@@ -10,7 +10,7 @@ $(document).ready(function() {
     let inputKeyWord = $("#key-word").val();
     let inputDocName = $("#doctor-name").val();
 
-    //Check what input has data
+    //Check what input has data, if no data: return error, if data in both: return error
     if (inputKeyWord && inputDocName) {
       $(".output").html("only use one search field at a time");
       $("#key-word").val("");
@@ -26,12 +26,25 @@ $(document).ready(function() {
     }
 
     async function runQuery(option) {
+      //run query for Doctor Name
       if (option === "name") {
-        console.log("name");
-        // const responce = await getDoctor.byName(inputDocName);
+        const responce = await getDoctor.byName(inputDocName);
+        if (responce.data.length > 0) {
+          console.log(responce);
+        } else {
+          console.log("name bad");
+          $(".output").html("sorry there was an issue getting your search");
+        }
+        //run query for Keyword
       } else if (option === "keyWord") {
-        console.log("keyword");
-        // const responce = await getDoctor.byKeyWord(inputKeyWord);
+        const responce = await getDoctor.byKeyWord(inputKeyWord);
+        if (responce.data.length > 0) {
+          console.log(responce);
+          //report issue
+        } else {
+          console.log("keyword bad");
+          $(".output").html("sorry there was an issue getting your search");
+        }
       }
     }
     // $(".output").html(inputKeyWord + " " + inputDocName);

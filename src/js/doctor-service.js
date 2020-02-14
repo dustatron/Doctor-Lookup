@@ -19,14 +19,12 @@ export class GetDoctor {
         return false;
       }
       let makeJson = await reponce.json();
-      console.log("name search", makeJson);
+      return makeJson;
+      // console.log("name search", makeJson);
     } catch (error) {
       console.error(error);
       return false;
     }
-    //take name and run async funtion
-    //have if statement for status 200
-    //push array of objects to this.listString
   }
 
   async byKeyWord(keyWord) {
@@ -41,7 +39,8 @@ export class GetDoctor {
         return false;
       }
       let makeJson = await reponce.json();
-      console.log("keyword searcg", makeJson);
+      return makeJson;
+      // console.log("keyword search", makeJson);
     } catch (error) {
       console.error(error);
       return false;
