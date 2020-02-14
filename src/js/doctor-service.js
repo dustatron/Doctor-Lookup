@@ -5,6 +5,8 @@ export class GetDoctor {
     this.miles = "50";
     this.location = "45.512230%2C-122.658722";
     this.limit = "10";
+    this.keyword = "";
+    this.name = "";
   }
 
   async byName(name) {

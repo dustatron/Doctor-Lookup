@@ -8,6 +8,11 @@
   position: relative;
   .output {
     margin-top: 55px;
+    .error {
+      text-align: center;
+      font-size: larger;
+      font-weight: 700;
+    }
   }
 
   .loading {

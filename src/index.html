@@ -7,14 +7,14 @@
 <img src="" alt="">
 
 <body>
-  <div class="container">
+  <div class="container" style="display:none;">
     <!-- input form  -->
     <div class="row">
       <div class="col-md-6 offset-md-3 box-decore">
         <h1 class="text-center">Doctor Lookup</h1>
         <form>
           <div class="form-group">
-            <label for="key-word">Key Word</label>
+            <label for="key-word">Keyword</label>
             <input type="text" class="form-control" id="key-word" aria-describedby="input">
             <small id="input1-Help" class="form-text text-muted">You can put your thoughts here.</small>
           </div>
@@ -22,9 +22,19 @@
             <label for="doctor-name">By Name</label>
             <input type="text" class="form-control" id="doctor-name">
           </div>
-          <div class="form-group form-check">
-            <input type="checkbox" class="form-check-input" id="checkbox-1">
-            <label class="form-check-label" for="checkbox-1">Check me out</label>
+          <div class="form-group">
+            <label for="doctor-name">What City</label>
+            <input type="text" class="form-control" id="city" value="Portland">
+          </div>
+          <div class="form-group">
+            <label for="distance">Distance</label>
+            <select class="form-control" id="distance">
+              <option>10</option>
+              <option>25</option>
+              <option>50</option>
+              <option>100</option>
+              <option>300</option>
+            </select>
           </div>
           <button id="submitBtn" type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
         </form>

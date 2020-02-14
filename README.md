@@ -43,6 +43,8 @@ npm install
 ```
 6. Get an API key from [BetterDoctor API](https://developer.betterdoctor.com/)
 
+7.Get an API key from [OpenCage Geocoder](https://opencagedata.com/)
+
 7. Create a new '.env' file by typing:
 ```sh
 touch .env
@@ -50,7 +52,8 @@ touch .env
 
 8. Open the .env file in your test editor and add the following:
 ```sh
-API_KEY = YOUR UNIQUE API KEY GOES HERE
+API_KEY = YOUR UNIQUE API KEY FOR BETTERDOCTOR API
+GEO_API_KEY = YOUR OPENCAGE API HERE
 ```
 
 9. Now run the development server
@@ -94,6 +97,7 @@ _The software is provided as is. It might work as expected - or not. Use at your
 * [Jest](https://jestjs.io/)
 * [dotenv](#)
 * [BetterDoctor API](https://developer.betterdoctor.com/)
+* [OpenCage Geocoder](https://opencagedata.com/)
 
 ## Environmental Variables Basics
 

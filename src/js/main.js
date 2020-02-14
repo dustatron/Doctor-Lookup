@@ -1,22 +1,35 @@
 import { GetDoctor } from "./../js/doctor-service";
 import { UI } from "./../js/ui";
+import { Location } from "./../js/location-service";
 import "./../scss/main.scss";
 import $ from "jquery";
 
+const location = new Location();
+
+//////////////////////////////////////
+////////  Document Starts  //////////
 $(document).ready(function() {
+  $(".container").fadeIn();
   let getDoctor = new GetDoctor();
   let ui = new UI();
-  //get form submit button
+
+  ///////////////////////////////////////
+  ///////// submit button  /////////////
   $("form").submit((event) => {
     event.preventDefault();
     let inputKeyWord = $("#key-word").val();
     let inputDocName = $("#doctor-name").val();
+    let inputCity = $("#city").val();
+    //Show loading gif
     $(".output").html("");
     $(".loading").show();
 
+    location.getLatLong(inputCity);
+
     //Check what input has data, if no data: return error, if data in both: return error
     if (inputKeyWord && inputDocName) {
-      $(".output").html("only use one search field at a time");
+      $(".loading").hide();
+      $(".output").html("<div class='error'>Please search for one query at a time</div>");
       ui.clearInputs();
     } else if (inputKeyWord !== "") {
       runQuery("keyWord");
@@ -25,7 +38,8 @@ $(document).ready(function() {
       runQuery("name");
       ui.clearInputs();
     } else {
-      $(".output").html("both search terms are empty");
+      $(".loading").hide();
+      $(".output").html("<div class='error'>Both search terms are empty</div>");
     }
 
     async function runQuery(option) {
@@ -37,7 +51,7 @@ $(document).ready(function() {
           ui.renderList(docList);
         } else {
           $(".loading").hide();
-          $(".output").html("Zero search results");
+          $(".output").html("<div class='error'>Zero search results</div>");
         }
         //run query for Keyword
       } else if (option === "keyWord") {
@@ -48,7 +62,7 @@ $(document).ready(function() {
           //report issue
         } else {
           $(".loading").hide();
-          $(".output").html("Zero search results");
+          $(".output").html("<div class='error'>Zero search results</div>");
         }
       }
     }
