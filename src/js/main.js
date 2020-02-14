@@ -11,8 +11,11 @@ $(document).ready(function() {
     let docName = $("#doctor-name").val();
 
     //print to DOM
-    getDoctor.byKeyWord(keyWord);
-    getDoctor.byName(docName);
+    if (keyWord === "") {
+      getDoctor.byName(docName);
+    } else if (docName === "") {
+      getDoctor.byKeyWord(keyWord);
+    }
     $(".output").html(keyWord + " " + docName);
   });
 });

@@ -7,8 +7,23 @@ export class GetDoctor {
     this.limit = "10";
   }
 
-  byName(name) {
-    console.log(name);
+  async byName(name) {
+    let queryString = `?name=${name}&location=${this.location}%2C${this.miles}&user_location=${this
+      .location}&skip=0&limit=${this.limit}&user_key=${process.env.API_KEY}`;
+    let url = this.link + queryString;
+
+    try {
+      // API call
+      let reponce = await fetch(url);
+      if (reponce.status != 200) {
+        return false;
+      }
+      let makeJson = await reponce.json();
+      console.log("name search", makeJson);
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
     //take name and run async funtion
     //have if statement for status 200
     //push array of objects to this.listString
@@ -26,13 +41,10 @@ export class GetDoctor {
         return false;
       }
       let makeJson = await reponce.json();
-      console.log(makeJson);
+      console.log("keyword searcg", makeJson);
     } catch (error) {
       console.error(error);
       return false;
     }
-    //take keyWord and run async funtion
-    //have if statement for status 200
-    //push array of objects to this.listString
   }
 }
