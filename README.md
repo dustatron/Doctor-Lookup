@@ -1,17 +1,13 @@
-# _Webpack Boilerplate_
+# _Doctor Look Up_
 
-#### _This site comes with the all basic parts to get you started making a single page website with webpack fast. | Feb 5th. 2020_
+#### _This site will allow you to look up a doctor near you. | Feb 14th. 2020_
 
 #### By _** Dusty McCord**_
 [link to demo site coming](https://dustatron.github.io/webpack-boilerplate/)
 
 ## Description
 
-There is a pre-built two input form with a submit button. There is also a simple jQuery function that will console.log when the submit button is clicked.
-
-The .gitignore file is a template for mac osx but a link is provided to get a template for any operating system. 
-
-[create a .gitignore template for your os here](https://www.gitignore.io/)
+This site was created as an Epicodus independent project. It uses the BetterDoctor API to find doctors near you. 
 
 ## Setup/Installation Requirements
 
@@ -52,14 +48,6 @@ npm run start
 
 7. edit files in '/src' to make changes to the project.
 
-8. remove .git delete this projects commit history
-```sh
-rm -rf .git
-```
-9. start your new git repository 
-```sh
-git init
-```
 
 
 
