@@ -4,10 +4,17 @@
   box-shadow: 1px 1px 15px -4px rgba(0, 0, 0, .2);
 }
 
-.output {
-  margin-top: 55px;
-}
+.results {
+  position: relative;
+  .output {
+    margin-top: 55px;
+  }
 
-.loading {
-  display: none;
+  .loading {
+    text-align: center;
+    width: 100%;
+    height: 100px;
+    display: none;
+    margin: 1rem auto;
+  }
 }
