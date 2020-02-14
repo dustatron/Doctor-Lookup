@@ -68,7 +68,11 @@ npm run start
 
 Behavoir | Input | Output
 :---------|:------:|:------:
-|1 - A user will be able to enter a medical issue and the program will return a listing of doctors near them | 'couching' | return list of doctors |
+|1 - A user will enter a medical issue and the program will return a listing of doctors near them. | 'couching' | return list of doctors |
+|2 - A user will enter a name and the program will return a list of doctors. | McCord | return list of Doctors with the name McCord |
+|3 - The programs return list will include first name, last name, address, phone number, website and whether or not the doctor is accepting new patients. | McCord | list with first name, last name, address, phone number, website and whether or not the doctor is accepting new patients
+|4 - When the API returns an error the program will return a message stating the issue | API returns error | show error |
+|5 - If the API returns no doctors the program should tell the user no Doctors where found | API returns an empty array | "We did not find any Doctors that fit your search criteria"
 
 
 ## Support 
@@ -91,20 +95,33 @@ _The software is provided as is. It might work as expected - or not. Use at your
 * [dotenv](#)
 * [BetterDoctor API](https://developer.betterdoctor.com/)
 
-## Environmental Variables
+## Environmental Variables Basics
 
-save a file name '.env'
-store  in the file 
+Make sure you have an '.env' in the top level of your project.
+The syntax should look like this 
 ```sh
 API_KEY = YOUR UNIQUE API KEY GOES HERE
 OTHER_API_KEY = OTHER UNIQUE API KEY GOES HERE
 ```
-use 'process.env.API_KEY'.
+Use this syntax in your query string:
+```sh
+'process.env.API_KEY'.
+```
 
-Example:
+Example query string:
 
 ```javascript
-const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}`
+const city = 'get city from user';
+const url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.API_KEY}`;
+```
+Add this to your eslinter settings file under env:
+```js
+... 
+"extends": "eslint:recommended",
+"env": {
+    "node": true //allows env api key
+}
+...
 ```
 
 ## Useful tools
