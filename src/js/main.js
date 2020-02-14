@@ -33,18 +33,20 @@ $(document).ready(function() {
       if (locationData === 0) {
         $(".output").html("That city was not found");
       }
-      console.log(locationData[0].geometry);
-      getDoctor.setLocaiton(
+      console.log("from geo api", locationData[0].components.city);
+      await getDoctor.setLocaiton(
         locationData[0].geometry,
         locationData[0].components.city,
         locationData[0].components.state
       );
 
+      console.log("from doc class", getDoctor.city);
+
       const docList = await getDoctor.returnList();
       $(".loading").hide(); // Turn off loading animation
 
-      if (docList === 0) {
-        $(".output").html("Zero Results");
+      if (docList.length === 0) {
+        $(".output").html("<div class='text-center'><strong>Zero Results</strong></div>");
       } else {
         ui.printCity();
         ui.renderList(docList); //print linst to screen

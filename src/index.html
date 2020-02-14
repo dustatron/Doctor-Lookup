@@ -23,18 +23,8 @@
             <input type="text" class="form-control" id="doctor-name">
           </div>
           <div class="form-group">
-            <label for="doctor-name">What City</label>
-            <input type="text" class="form-control" id="city" value="Portland">
-          </div>
-          <div class="form-group">
-            <label for="distance">Distance</label>
-            <select class="form-control" id="distance">
-              <option>10</option>
-              <option>25</option>
-              <option>50</option>
-              <option>100</option>
-              <option>300</option>
-            </select>
+            <label for="doctor-name">What City and State</label>
+            <input type="text" class="form-control" id="city" value="Portland Oregon">
           </div>
           <button id="submitBtn" type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
         </form>
@@ -46,6 +36,9 @@
       <div class="results col-md-6 offset-md-3">
         <div class="loading">
           <img src="https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif" alt="">
+        </div>
+        <div class="city-box">
+          Showing results for Portland Oregon
         </div>
         <div class="output">
           <!-- Print List -->

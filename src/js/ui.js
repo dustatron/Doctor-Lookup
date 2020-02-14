@@ -47,6 +47,6 @@ export class UI {
   }
 
   printCity() {
-    $(".output").before(this.doctor.city);
+    $(".city-box").show().html("Showing results for " + this.doctor.city + " " + this.doctor.state);
   }
 }

@@ -37,3 +37,17 @@
     }
   }
 }
+
+.city-box {
+  display: none;
+  margin: 25px auto;
+  width: 70%;
+  border: 1px dashed rgba(87, 87, 87, 0.2);
+  background: rgba(103, 182, 252, 0.153);
+  border-radius: 5px;
+
+  text-align: center;
+  font-weight: 700;
+  font-size: larger;
+  padding: 20px 10px;
+}
