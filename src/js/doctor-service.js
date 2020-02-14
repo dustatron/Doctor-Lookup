@@ -1,6 +1,6 @@
 export class GetDoctor {
   constructor() {
-    this.listString = [];
+    // this.renterList = [];
     this.link = "https://api.betterdoctor.com/2016-03-01/doctors";
     this.miles = "50";
     this.location = "45.512230%2C-122.658722";
@@ -18,8 +18,8 @@ export class GetDoctor {
       if (reponce.status != 200) {
         return false;
       }
-      let makeJson = await reponce.json();
-      return makeJson;
+      const jsonBody = await reponce.json();
+      return this.simplify(jsonBody);
       // console.log("name search", makeJson);
     } catch (error) {
       console.error(error);
@@ -38,12 +38,37 @@ export class GetDoctor {
       if (reponce.status != 200) {
         return false;
       }
-      let makeJson = await reponce.json();
-      return makeJson;
+      const jsonBody = await reponce.json();
+      //create simple objects from json
+      return this.simplify(jsonBody);
       // console.log("keyword search", makeJson);
     } catch (error) {
       console.error(error);
       return false;
     }
+  }
+
+  simplify(body) {
+    let renterList = [];
+    body.data.forEach((doc) => {
+      const { accepts_new_patients, website, visit_address, phones } = doc.practices[0];
+      const { first_name, middle_name, last_name, title, image_url, gender, bio } = doc.profile;
+      const tempObj = {
+        accepts_new_patients,
+        website,
+        visit_address,
+        phones,
+        first_name,
+        middle_name,
+        last_name,
+        title,
+        image_url,
+        gender,
+        bio
+      };
+      renterList.push(tempObj);
+    });
+
+    return renterList;
   }
 }

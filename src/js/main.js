@@ -29,7 +29,7 @@ $(document).ready(function() {
       //run query for Doctor Name
       if (option === "name") {
         const responce = await getDoctor.byName(inputDocName);
-        if (responce.data.length > 0) {
+        if (responce.length > 0) {
           console.log(responce);
         } else {
           console.log("name bad");
@@ -38,7 +38,7 @@ $(document).ready(function() {
         //run query for Keyword
       } else if (option === "keyWord") {
         const responce = await getDoctor.byKeyWord(inputKeyWord);
-        if (responce.data.length > 0) {
+        if (responce.length > 0) {
           console.log(responce);
           //report issue
         } else {
