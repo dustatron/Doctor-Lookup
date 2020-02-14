@@ -31,26 +31,20 @@ $(document).ready(function() {
       if (option === "name") {
         const docList = await getDoctor.byName(inputDocName);
         if (docList.length > 0) {
-          console.log(docList);
           ui.renderList(docList);
         } else {
-          console.log("name bad");
-          $(".output").html("sorry there was an issue getting your search");
+          $(".output").html("Zero search results");
         }
         //run query for Keyword
       } else if (option === "keyWord") {
         const docList = await getDoctor.byKeyWord(inputKeyWord);
         if (docList.length > 0) {
-          console.log(docList);
           ui.renderList(docList);
           //report issue
         } else {
-          console.log("keyword bad");
-          $(".output").html("sorry there was an issue getting your search");
+          $(".output").html("Zero search results");
         }
       }
     }
-
-    // $(".output").html(inputKeyWord + " " + inputDocName);
   });
 });
