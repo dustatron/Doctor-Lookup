@@ -1,16 +1,17 @@
 import { GetDoctor } from "./../js/doctor-service";
 import { UI } from "./../js/ui";
 import { Location } from "./../js/location-service";
+
 import "./../scss/main.scss";
 import $ from "jquery";
 
 const location = new Location();
+let getDoctor = new GetDoctor();
 
 //////////////////////////////////////
 ////////  Document Starts  //////////
 $(document).ready(function() {
   $(".container").fadeIn();
-  let getDoctor = new GetDoctor();
   let ui = new UI(getDoctor);
 
   ///////////////////////////////////////
@@ -21,16 +22,18 @@ $(document).ready(function() {
     let inputDocName = $("#doctor-name").val();
     let inputCity = $("#city").val();
 
-    //Show loading gif
+    //send inputs to objects
+    getDoctor.addInput(inputKeyWord, inputDocName);
+    ui.clearInputs();
+
+    //Show loading view
     $(".output").html("");
     $(".loading").show();
     $(".city-box").hide();
 
-    getDoctor.addInput(inputKeyWord, inputDocName);
-    ui.clearInputs();
-
+    //check if city is empty
     if (inputCity) {
-      //Check that a search term has been entered
+      //Check that a search term have been entered
       if (inputKeyWord || inputDocName) {
         //Search Terms found, run Search
         renderDoctorList();
@@ -43,6 +46,7 @@ $(document).ready(function() {
       $(".output").html("<div class='text-center'><strong>No entered</strong></div>");
     }
 
+    //quest querys from APIs
     async function renderDoctorList() {
       const locationData = await location.getLatLong(inputCity);
       if (!locationData[0].components.city) {
@@ -53,15 +57,16 @@ $(document).ready(function() {
           locationData[0].geometry,
           locationData[0].components.city,
           locationData[0].components.state
-        );
+        ); //send locaiton data to doctor object
 
-        const docList = await getDoctor.returnList();
+        const docList = await getDoctor.returnList(); //make doctor query
         $(".loading").hide(); // Turn off loading animation
 
+        //check that doctor list has data
         if (docList.length === 0) {
           $(".output").html("<div class='text-center'><strong>Zero Results Please try again</strong></div>");
         } else {
-          ui.printCity();
+          ui.printCity(); //show city above list
           ui.renderList(docList); //print linst to screen
         }
       }

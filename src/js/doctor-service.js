@@ -11,17 +11,20 @@ export class GetDoctor {
     this.state = "state";
   }
 
+  //sets search terms
   addInput(keyword, name) {
     this.keyword = keyword;
     this.name = name;
   }
 
+  //sets locaiton data
   setLocaiton(arr, city, state) {
     this.location = arr.lat + "%2C" + arr.lng;
     this.city = city;
     this.state = state;
   }
 
+  //checks which terms have been entered and runs correct query
   returnList() {
     if (this.keyword && this.name) {
       return this.byKeyWord(this.keyword);
@@ -93,6 +96,7 @@ export class GetDoctor {
     }
   }
 
+  //prune json object
   simplify(body) {
     let renterList = [];
     body.data.forEach((doc) => {

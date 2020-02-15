@@ -3,11 +3,14 @@
 #### _This site will allow you to look up a doctor near you. | Feb 14th. 2020_
 
 #### By _** Dusty McCord**_
-[link to demo site coming](https://dustatron.github.io/webpack-boilerplate/)
+[link to demo site coming](#)
 
 ## Description
 
 This site was created as an Epicodus independent project. It uses the BetterDoctor API to find doctors near you. 
+
+![logo](img/screenshot.png) "Screenshot"
+
 
 ## Setup/Installation Requirements
 
