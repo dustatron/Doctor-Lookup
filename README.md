@@ -9,7 +9,7 @@
 
 This site was created as an Epicodus independent project. It uses the BetterDoctor API to find doctors near you. 
 
-![logo](img/screenshot.png) "Screenshot"
+![logo](img/screenshot.png)
 
 
 ## Setup/Installation Requirements
@@ -74,11 +74,13 @@ npm run start
 
 Behavoir | Input | Output
 :---------|:------:|:------:
-|1 - A user will enter a medical issue and the program will return a listing of doctors near them. | 'couching' | return list of doctors |
+|1 - A user will enter a keyword and the program will return a listing of doctors near them. | 'couching' | return list of doctors |
 |2 - A user will enter a name and the program will return a list of doctors. | McCord | return list of Doctors with the name McCord |
 |3 - The program will return a list that includes first name, last name, address, phone number, website and whether or not the doctor is accepting new patients. | McCord | list with first name, last name, address, phone number, website and whether or not the doctor is accepting new patients
 |4 - When the API returns an error the program will return a message stating the issue | API returns error | show error |
-|5 - If the API returns no doctors the program should tell the user no Doctors where found | API returns an empty array | "We did not find any Doctors that fit your search criteria"
+|5 - If the API returns no doctors the program should tell the user no Doctors where found | API returns an empty array | "No Doctors with your search criteria where found" |
+|6 - A user can input a city and the program will return a list of doctors in that city | Seattle | list of doctor in seattle based on search terms |
+|7 - The user can search for both name and keyword. The program will return a list of doctors based city, keyword, and name | seattle, Geltzer, cancer | Dr. Allen J Geltzer, MD |
 
 
 ## Support 

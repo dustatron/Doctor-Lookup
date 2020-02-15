@@ -9,7 +9,7 @@ const location = new Location();
 let getDoctor = new GetDoctor();
 
 //////////////////////////////////////
-////////  Document Starts  //////////
+////////  Document Start  //////////
 $(document).ready(function() {
   $(".container").fadeIn();
   let ui = new UI(getDoctor);
@@ -64,7 +64,9 @@ $(document).ready(function() {
 
         //check that doctor list has data
         if (docList.length === 0) {
-          $(".output").html("<div class='text-center'><strong>Zero Results Please try again</strong></div>");
+          $(".output").html(
+            "<div class='text-center'><strong>No Doctors found with your search criteria were found</strong></div>"
+          );
         } else {
           ui.printCity(); //show city above list
           ui.renderList(docList); //print linst to screen

@@ -1,4 +1,5 @@
 import $ from "jquery";
+
 export class UI {
   constructor(doctor) {
     this.doctor = doctor;
@@ -37,8 +38,10 @@ export class UI {
           </ul>
           </div>
           <div class="doc-box--info-bottom"> 
-            ${i.visit_address.street} ${i.visit_address.street2 ? "#" + i.visit_address.street2 : ""}, ${i.visit_address
-          .city},  ${i.visit_address.state}
+            ${i.visit_address.street} 
+            ${i.visit_address.street2 ? "#" + i.visit_address.street2 : ""}, 
+            ${i.visit_address.city},  
+            ${i.visit_address.state}
           </div>
         </div>
       </div>`;
