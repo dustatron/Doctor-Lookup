@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "prebuild": "echo $API_KEY $GEO_API_KEY",
     "build": "webpack --mode development",
     "start": "npm run build & webpack-dev-server --open --mode development",
     "lint": "eslint src/*.js",
