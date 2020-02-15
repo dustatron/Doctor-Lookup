@@ -24,7 +24,7 @@ export class GetDoctor {
 
   returnList() {
     if (this.keyword && this.name) {
-      return "Please search for one query at a time";
+      return this.byKeyWord(this.keyword);
     } else if (this.keyword) {
       return this.byKeyWord(this.keyword);
     } else if (this.name) {
@@ -41,12 +41,11 @@ export class GetDoctor {
 
     try {
       // API call
-      let reponce = await fetch(url);
-      if (reponce.status != 200) {
+      let responce = await fetch(url);
+      if (responce.status != 200) {
         return false;
       }
-      const jsonBody = await reponce.json();
-      console.log("name search", jsonBody);
+      const jsonBody = await responce.json();
       return this.simplify(jsonBody);
     } catch (error) {
       console.error(error);
@@ -55,19 +54,38 @@ export class GetDoctor {
   }
 
   async byKeyWord() {
+    let queryString = `?name=${this.name}&query=${this.keyword}&location=${this.location}%2C${this
+      .miles}&user_location=${this.location}&skip=0&limit=${this.limit}&user_key=${process.env.API_KEY}`;
+    let url = this.link + queryString;
+
+    try {
+      // API call
+      let responce = await fetch(url);
+      if (responce.status != 200) {
+        return false;
+      }
+      const jsonBody = await responce.json();
+      //create simple objects from json
+      return this.simplify(jsonBody);
+    } catch (error) {
+      console.error(error);
+      return false;
+    }
+  }
+
+  async byBoth() {
     let queryString = `?query=${this.keyword}&location=${this.location}%2C${this.miles}&user_location=${this
       .location}&skip=0&limit=${this.limit}&user_key=${process.env.API_KEY}`;
     let url = this.link + queryString;
 
     try {
       // API call
-      let reponce = await fetch(url);
-      if (reponce.status != 200) {
+      let responce = await fetch(url);
+      if (responce.status != 200) {
         return false;
       }
-      const jsonBody = await reponce.json();
+      const jsonBody = await responce.json();
       //create simple objects from json
-      console.log("keyword search", jsonBody);
       return this.simplify(jsonBody);
     } catch (error) {
       console.error(error);
