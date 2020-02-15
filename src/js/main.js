@@ -49,6 +49,10 @@ $(document).ready(function() {
     //quest querys from APIs
     async function renderDoctorList() {
       const locationData = await location.getLatLong(inputCity);
+      if (!locationData) {
+        $(".loading").hide();
+        $(".output").html("<div class='text-center'><strong>The location API refused to load</strong></div>");
+      }
       if (!locationData[0].components.city) {
         $(".loading").hide();
         $(".output").html("<div class='text-center'><strong>Could not find that city Please try again</strong></div>");
